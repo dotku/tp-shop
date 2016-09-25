@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title><!-- ?php echo C('SITE_TITLE')?--></title>
+
+    <!-- Bootstrap -->
+    <link href="__ROOT__/Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ROOT__/Public/css/style.css" rel="stylesheet">
+    <link href="__ROOT__/Public/css/owl.carousel.css" rel="stylesheet">
+    <link href="__ROOT__/Public/css/owl.theme.css" rel="stylesheet">
+    <link href="__ROOT__/Public/css/swiper.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+      var $tp = {};
+      $tp.ROOT = "__ROOT__";
+    </script>
+    <script src="__ROOT__/public/js/js-jay.js"></script>
+  </head>
+  <body>
+    <?php include_once T('Common/nav') ?>
+    <?php include_once T('Common/header') ?>
+    <?php include_once T("Common/nav_menu")?>
+    <?php include_once T('Common/main_banner'); ?>
+
+    <div class="container content-wrap">
+      <article class="row tab-menu">
+        <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3 text-center">
+          <div class="row tab-wrap">
+            <div class="col-xs-6 current text-center tab">热卖商品</div>
+            <div class="col-xs-6 text-center tab">新品上架</div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="tab-content">
+        <!-- 
+        ?php 
+          $model_goods = D('goods');
+          $list_goods = D('goods')->order(array('history_purchase desc'))->limit(2)->select();
+          if (is_array($list_goods) && !empty($list_goods)) {
+            foreach ($list_goods as $val) {
+        ?
+        -->
+        <div class="row tab-box">
+          <div class="col-md-7 col-xs-12">
+            <div class="row">
+              <a href="<?php echo U('/Home/Goods/')?>?goods_id=<?php echo $val['goods_id']?>" class="pro-mask">
+                <img src="<?php echo __ROOT__; ?><?php echo $val['image_url']?>" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-md-5 col-xs-12">
+            <div class="row pro-detail">
+              <a href="<?php echo U('/Home/Goods/')?>?goods_id=<?php echo $val['goods_id']?>" class="pro-tit">
+              <!--?php echo $val['content']? --></a>
+              <div class="pro-price">
+                <span>
+                  <em><!-- ?php echo getSignByCurrency($val['currency'])? --></em>
+                  <!-- ?php echo number_format($val['unit_price'], 2);? -->
+                </span>
+                <a href="<?php echo U('/Home/Goods/')?>?goods_id=<?php echo $val['goods_id']?>" class="goto-btn">去看看</a>
+              </div>
+              <div class="pro-tag">
+                <span><em><!-- ?php echo $val['history_purchase']? --></em>人已经购买</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- 
+      ?php 
+          }
+        }
+      ?
+      -->
+      </article>
+      <article class="tab-content hidden">
+      <!-- 
+      ?php 
+        $model_goods = D('goods');
+        $list_goods = D('goods')->order(array('goods_id desc'))->limit(2)->select();
+        if (is_array($list_goods) && !empty($list_goods)) {
+          foreach ($list_goods as $val) {
+      ?
+      -->
+      <div class="row tab-box">
+          <div class="col-md-7 col-xs-12">
+            <div class="row">s
+              <a href="<?php echo U('/Home/Goods/')?>?goods_id=<?php echo $val['goods_id']?>" class="pro-mask">
+                <img src="<?php echo __ROOT__; ?><?php echo $val['image_url']?>" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-md-5 col-xs-12">
+            <div class="row pro-detail">
+              <a href="<?php echo U('/Home/Goods/')?>?goods_id=" class="pro-tit"><!-- ?php echo $val['content']? --></a>
+              <div class="pro-price">
+                <span>
+                  <em><!-- ?php echo getSignByCurrency($val['currency'])? --></em>
+                  <!-- ?php echo number_format($val['unit_price'], 2); ? -->
+                </span>
+                <a href="<?php echo U('/Home/Goods/')?>?goods_id=<?php echo $val['goods_id']?>" class="goto-btn">去看看</a>
+              </div>
+              <div class="pro-tag">
+                <span><em><!-- ?php echo $val['history_purchase']? --></em>人已经购买</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- 
+      ?php 
+          }
+        }
+      ?
+      -->
+      </article>
+      
+      <article class="order" id="preorder">
+        <h2>范米粒种草<span>火爆预约中</span></h2>
+        <div class="row">
+        <!--
+          <!?php 
+            // var_dump($list_goods);
+            if ($_GET['preorder_id'] >= 0) {
+              $map_goods = array(
+                'goods_id' => $_GET['preorder_id']
+              );
+              $info_goods = $model_goods->where($map_goods)->find();
+              $info_goods['preorder_num']++;
+              // var_dump($info_goods);
+              $model_goods->save($info_goods);
+            }
+
+            $model_goods = D('goods');
+            $map_goods = array(
+              'if_preorder' => 1
+            );
+            $list_goods = $model_goods->where($map_goods)->limit(6)->select();
+
+          ?>
+
+          <!?php foreach($list_goods as $value) { ?>
+        -->
+          <div class="col-md-4 col-xs-12 wrap">
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="row">
+                  <img src="<?php echo $value['image_url']?>" alt="">
+                </div>
+              </div>
+              <div class="col-xs-6 con-wrap">
+                <div class="row">
+                  <p class="top"><span><!--?php echo $value['preorder_num']?--></span> 人已预约</p>
+                  <p class="tit"><!-- ?php mb_internal_encoding("UTF-8"); echo mb_substr($value['goods_name_cn'], 0, 30);?--></p>
+                  <p class="pre-wrap col-xs-12">
+                    <span class="price"><!-- ?php echo getSignByCurrency($val['currency'])? -->
+                    <!--?php echo substr($value['unit_price'], 0, -2);?--></span>
+                    <a href="?preorder_id=<?php echo $value['goods_id']?>#preorder" class="order-btn">预 约</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
+
+        </div>
+      </article>
+      
+    </div>
+    <footer class="hidden-xs">© 2016 fnmili.</footer>
+    <div class="footer-xs visible-xs">
+      <ul>
+        <li><a href="#" class="active">首页</a></li>
+        <li><a href="#">活动</a></li>
+        <li><a href="#">分类</a></li>
+        <li><a href="#">购物车</a></li>
+        <li><a href="#">我的</a></li>
+      </ul>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src='__ROOT__/public/js/jquery-1.12.3.min.js'></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__ROOT__/public/js/bootstrap.min.js"></script>
+    <script src="__ROOT__/public/js/owl.carousel.js"></script>
+    <script src="__ROOT__/public/js/swiper.min.js"></script>
+    <script src="__ROOT__/public/js/js.js"></script>
+    <script src="__ROOT__/public/js/common.js"></script>
+  </body>
+</html>

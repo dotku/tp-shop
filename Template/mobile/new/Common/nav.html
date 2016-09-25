@@ -1,0 +1,54 @@
+<nav class="top-nav hidden-xs">
+      <div class="container" style="padding:0px">
+        <ul class="header-top-left">
+          <?php if ($_SESSION['user']) { ?>
+            <li><?php echo $_SESSION['user']['username'].'，'; ?>范米粒欢迎您！</li>
+          <?php } else { ?>
+            <li>范米粒欢迎您！</li>
+          <?php } ?>
+          <?php if (!$_SESSION['user']) { ?>
+          <li style="display:none">
+            <a href="<?php echo __ROOT__; ?>/index.php/User/login">登录</a>|
+          </li>
+          <li style="display:none">
+            <a href="<?php echo __ROOT__; ?>/index.php/User/register">注册</a>
+          </li>
+          <?php } ?>
+        </ul>
+        <a href="javascript:;" class="app">
+          <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+          手机范米粒
+          <span class="popover bottom">
+            <img src="<?php echo __ROOT__; ?>/public/images/2dcode/2dcode-app.png" alt="">
+            <i class="arrow"></i>
+          </span>
+        </a>
+        <ul class="top-nav-right">
+          <li style="display:none"><a href="#">每日签到</a>|</li>
+          <li style="display:none"><a href="<?php echo U('/Order')?>">我的订单</a>|</li>
+          <li style="display:none">
+            <a href="#">个人中心<span class="caret"></span></a>
+            <div class="drop-menu">
+              <a href="#">我的优惠券</a>
+              <a href="#">我的米粒币</a>
+              <span class="spliter"></span>
+              <a href="#">我的实名认证</a>
+              <a href="#">收货地址</a>
+              <span class="spliter"></span>
+              <a href="#">售后管理</a>
+              <a href="<?php echo U('/User/logout') ?>">退出</a>
+            </div>
+          </li>
+          <li><a href="<?php echo U('/notice') ?>">消费者告知书</a>|</li>
+          <li>
+            <a href="#">更多<span class="caret"></span></a>
+            <div class="drop-menu">
+              <a href="#" onclick="AddFavorite('范米粒', <?php echo '\'http://'.$_SERVER['HTTP_HOST'].'\'' ?>)">收藏本站</a>
+              <span class="spliter"></span>
+              <a href="http://weibo.com/leyant">新浪微博</a>
+              <a href="http://www.weibo.com/#" style="display:none">微信公众号</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>

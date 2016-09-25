@@ -1,0 +1,36 @@
+<style>
+.hotwords li+li:before{content: " | "; margin: 0 10px; color: #999;}
+.label-white {background-color: white; color: #ED145B;}
+</style>
+<header class="top-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-2">
+            <div class="row">
+              <a href="<?php echo __ROOT__ ?>/" class="logo"></a>
+            </div>
+          </div>
+          <div class="col-md-5 col-md-offset-2 col-xs-10 search-wrap">
+            <div class="row">
+            <form action="<?php echo __ROOT__?>/index.php/Search" id="form_search">
+                <input class="search" type="text" placeholder="在千万海外商品搜索" value="<?php echo $_GET['keywords']?>" name="keywords">
+            
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <span class="top-search-btn glyphicon glyphicon-search"
+                onclick="$('#form_search').submit()"></span>
+            </form>
+                <ul class="hidden-xs hotwords">
+                  <!--?php foreach(D('compute_search')->select() as $key => $val) { ?-->
+                    <li><a href="<?php echo __ROOT__?>/index.php/Search?keywords=<?php echo $val['keywords']?>"><?php echo $val['keywords']?></a></li>
+                  <!--?php } ?-->
+                </ul>
+            </div>
+          </div>
+          <a href="<?php echo U('/Home/Checkout/cart'); ?>" class="top-header-cart hidden-xs"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>购物车 
+            <span class="label label-pill label-white"><?php echo is_array(unserialize(cookie('cart'))) ? count(unserialize(cookie('cart'))) : 0; ?></span></a>
+        </div>
+      </div>
+    </header>
+    <?php
+      // var_dump(count(unserialize(cookie('cart'))));
+    ?>

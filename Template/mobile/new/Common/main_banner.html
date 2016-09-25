@@ -1,0 +1,18 @@
+<div class="fadeOut owl-carousel">
+      <!--
+      ?php 
+        $model_banner = D('banner');
+        $where_banner['activity_id'] = 0;
+        isset($_GET['activity_id']) ? $where_banner['activity_id'] = $_GET['activity_id'] : '';
+        $list_banner = $model_banner->where($where_banner)->select();
+        if (is_array($list_banner) && !empty($list_banner)) {
+          foreach ($list_banner as $val) {
+      ?-->
+        <div><a href="<?php echo $val['anchor_url']?>"><img src="<?php echo $val['image_url']?>"></a></div>
+      <!--
+      ?php 
+          }
+        }
+      ?
+      -->
+    </div>

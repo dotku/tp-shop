@@ -1,0 +1,21 @@
+<?php 
+  $model_activity = D('activity');
+  $list_activity = $model_activity->select();
+?>
+<nav class="top-menu">
+      <div class="container">
+        <div class="row">
+          <div class="menu-wrap swiper-wrapper">
+            <div class="swiper-slide"><a href="<?php echo U('/')?>">首页</a></div>
+            <?php foreach($list_activity as $value) { ?>
+                <div class="swiper-slide"><a href="<?php echo U('/').$value['url']?>"><?php echo $value['display']?></a></div>
+            <?php } ?>
+          </div>
+          <ul class="icon-wrap hidden-xs">
+            <li><img src="<?php echo __ROOT__; ?>/public/images/icon/1.jpg"></li>
+            <li><img src="<?php echo __ROOT__; ?>/public/images/icon/2.jpg"></li>
+            <li><img src="<?php echo __ROOT__; ?>/public/images/icon/3.jpg"></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
