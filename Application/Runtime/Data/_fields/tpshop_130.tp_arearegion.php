@@ -1,0 +1,1 @@
+a:4:{i:0;s:16:"shipping_area_id";i:1;s:9:"region_id";s:3:"_pk";a:2:{i:0;s:16:"shipping_area_id";i:1;s:9:"region_id";}s:5:"_type";a:2:{s:16:"shipping_area_id";s:16:"int(11) unsigned";s:9:"region_id";s:16:"int(11) unsigned";}}

@@ -128,7 +128,7 @@
         var city_id = $('#city').val();
         var district_id = $('#district').val();
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: "{:U('Home/Cart/ajax_PickupPoint')}",
             dataType:"json",
             data: {province_id: province_id, city_id: city_id, district_id: district_id},

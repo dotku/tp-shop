@@ -1,0 +1,1 @@
+a:8:{i:0;s:8:"goods_id";i:1;s:3:"key";i:2;s:8:"key_name";i:3;s:5:"price";i:4;s:11:"store_count";i:5;s:8:"bar_code";i:6;s:3:"sku";s:5:"_type";a:7:{s:8:"goods_id";s:7:"int(11)";s:3:"key";s:12:"varchar(255)";s:8:"key_name";s:12:"varchar(255)";s:5:"price";s:13:"decimal(10,2)";s:11:"store_count";s:16:"int(11) unsigned";s:8:"bar_code";s:11:"varchar(32)";s:3:"sku";s:12:"varchar(128)";}}

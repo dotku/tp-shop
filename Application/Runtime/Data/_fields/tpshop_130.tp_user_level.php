@@ -1,0 +1,1 @@
+a:7:{i:0;s:8:"level_id";i:1;s:10:"level_name";i:2;s:6:"amount";i:3;s:8:"discount";i:4;s:8:"describe";s:3:"_pk";s:8:"level_id";s:5:"_type";a:5:{s:8:"level_id";s:20:"smallint(4) unsigned";s:10:"level_name";s:11:"varchar(30)";s:6:"amount";s:13:"decimal(10,2)";s:8:"discount";s:11:"smallint(4)";s:8:"describe";s:12:"varchar(200)";}}
